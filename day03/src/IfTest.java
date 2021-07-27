@@ -33,6 +33,5 @@ public class IfTest {
         }else{
             System.out.println("老年时期");
         }
-
     }
 }
