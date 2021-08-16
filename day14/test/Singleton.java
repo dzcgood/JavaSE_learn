@@ -54,3 +54,16 @@ class Singleton2{
         return singleton2;
     }
 }
+/*
+ * 饿汉式另外一种实现方法
+ * */
+class Singleton3{
+    //私有化的构造器
+    private Singleton3(){
+
+    }
+
+    //内部创建静态的类的对象，注意要使用public static final
+    public static final Singleton3 singleton = new Singleton3();
+
+}
