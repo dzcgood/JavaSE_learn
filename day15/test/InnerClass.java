@@ -46,7 +46,7 @@ public class InnerClass {
 
     //开发中局部内部类的使用
     public Comparable getComparable() {
-//        class MyComparable implements Comparable{
+        //        class MyComparable implements Comparable{
         //方式一
 //            @Override
 //            public int compareTo(Object o) {
@@ -56,13 +56,12 @@ public class InnerClass {
 //        return new MyComparable();
 //    }
         //方式二 匿名内部类
-            return new Comparable(){
+            return new Comparable() {
                 @Override
                 public int compareTo(Object o) {
                     return 0;
-                };
-
-        }
+                }
+            };
     }
 }
 
