@@ -29,6 +29,7 @@ public class CommunicationTest {
     }
 }
 
+
 class Communication implements Runnable{
     private int number = 1;
 
