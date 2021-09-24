@@ -69,4 +69,18 @@ public class StringBuffer_StringBuilderTest {
         * 遍历：toString, for + charAt
         * */
     }
+
+    /*
+    * 面试题
+    * */
+    @Test
+    public void test3(){
+        String str = null;
+        StringBuffer sb = new StringBuffer();
+        sb.append(str);//不报错
+        System.out.println(sb.length());//4
+        System.out.println(sb);//"null"，实际上是把str当成字符串”null“加入了sb
+        StringBuffer sb1 = new StringBuffer(str);//报错，空指针异常，因为构造器会调用str.length()方法，这里导致空指针
+        System.out.println(sb1);//执行不到此处
+    }
 }
