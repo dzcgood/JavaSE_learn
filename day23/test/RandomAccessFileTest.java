@@ -19,6 +19,7 @@ import java.io.RandomAccessFile;
 *   > rwd 可读写，同步文件内容的更新
 * 3、作为输出流时，如果写入的文件不存在，则会自动创建
 *    若写入的文件存在，则默认从头开始覆盖
+* 4、seek(int pos)方法可以定位指针位置
 * */
 public class RandomAccessFileTest{
     @Test
@@ -56,7 +57,25 @@ public class RandomAccessFileTest{
     @Test
     public void test2() throws IOException{
         RandomAccessFile rw = new RandomAccessFile("randomTest.txt", "rw");
-        rw.write("xyz".getBytes());//因为参数是byte[]
+        rw.seek(3);//将指针调到角标为3的位置，角标是从0开始的
+        //其实write执行的就是覆盖的操作
+//        rw.write("xyz".getBytes());//因为参数是byte[]，这里执行的是覆盖
+        //下面实现插入（而不是覆盖），先复制后面部分，然后执行写入，最后把复制好的再写入到文件后面
+        //1、保存指针3后面的数据到StringBuilder中
+        byte[] buffer = new byte[20];
+        //使用StringBuilder，长度设置为文件长度
+        StringBuilder builder = new StringBuilder((int)new File("randomTest.txt").length());
+        int len;
+        while((len = rw.read(buffer))!= -1){
+            builder.append(new String(buffer, 0 , len));
+        }
+        //读取完后，指针指向文件末尾，所以要重新定位
+        rw.seek(3);
+        //写入要插入的字符串
+        rw.write("xyz".getBytes());
+        //写入刚才复制的字符串
+        rw.write(builder.toString().getBytes());//StringBuilder没有getBytes()方法，所以先转换成String再调用toString()
+        //关闭流
         rw.close();
     }
 }
