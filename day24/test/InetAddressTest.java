@@ -39,6 +39,7 @@ public class InetAddressTest {
             InetAddress inet3 = InetAddress.getByName("127.0.0.1");//本机地址
             System.out.println(inet3);
             InetAddress localHost = InetAddress.getLocalHost();//获取本机
+            System.out.println(localHost);
         } catch (UnknownHostException e) {
             e.printStackTrace();
         }
