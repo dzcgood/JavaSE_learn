@@ -8,6 +8,18 @@ import java.lang.reflect.Method;
 /**
  * @author DzcGood
  * @date 2021/10/16 - 1:47
+ *
+ * 1、反射机制与面向对象中的封装性是不是矛盾？如何看待两个技术？
+ *  > 不矛盾。（面试的时候必须这么说hhh）
+ *  > 封装性解决的是建议使用和不建议使用的问题，反射解决的是能不能调用的问题
+ * 2、通过直接new的方式或反射的方式都可以调用公共的结构，开发中用哪个？
+ *  > 建议：直接new的方式
+ *  > 什么时候使用反射：编译的时候不能确定需要造什么类的对象
+ * 3、关于java.lang.Class类的理解
+ *  > 类的加载过程：
+ *      程序在经过javac.exe命令后，会生成一个或多个字节码文件(.class)，接着我们使用java.exe命令对某个字节码文件
+ *      解释运行，相当于将某个字节码文件加载到内存中，此过程就称为类的加载。加载到内存中的类称为运行时类，就作为Class
+ *      的一个实例。换句话说，Class的实例就对应着一个运行时类
  */
 public class ReflectionTest {
     //反射之前，对于Person的操作
@@ -55,7 +67,6 @@ public class ReflectionTest {
         showNation.setAccessible(true);
         //相当于String nation = person1.showNation("中国")
         String nation = (String) showNation.invoke(person1, "中国");
-
     }
 
 }
