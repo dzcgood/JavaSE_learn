@@ -20,6 +20,9 @@ import java.lang.reflect.Method;
  *      程序在经过javac.exe命令后，会生成一个或多个字节码文件(.class)，接着我们使用java.exe命令对某个字节码文件
  *      解释运行，相当于将某个字节码文件加载到内存中，此过程就称为类的加载。加载到内存中的类称为运行时类，就作为Class
  *      的一个实例。换句话说，Class的实例就对应着一个运行时类
+ *  > 哪些类型可以有Class对象？
+ *      类，数组，接口，枚举，注解，基本数据类型，void
+ *      注意:对于数组，只要数组的类型和维度一致，那么Class就是相同的。比如 int[] a = new int[10]; int[] b = new int[100]
  */
 public class ReflectionTest {
     //反射之前，对于Person的操作
@@ -69,4 +72,11 @@ public class ReflectionTest {
         String nation = (String) showNation.invoke(person1, "中国");
     }
 
+//    注意:对于数组，只要数组的类型和维度一致，那么Class就是相同的
+    @Test
+    public void test3(){
+        int[] a = new int[100];
+        int[] b = new int[10];
+        System.out.println(a.getClass() == b.getClass());//true
+    }
 }
