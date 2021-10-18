@@ -27,6 +27,7 @@ public class Person extends Creature<String> implements Comparable<Person>, MyIn
         return nation;
     }
 
+    @MyAnnotation
     @Override
     public void display(){
         System.out.println("我是一个人");
@@ -38,7 +39,12 @@ public class Person extends Creature<String> implements Comparable<Person>, MyIn
         return this.name.compareTo(p.name);
     }
 
+    @MyAnnotation
     public String showInterest(String interests, int age) throws NullPointerException, ClassCastException{
         return interests;
+    }
+
+    private static void showDesc(){
+        System.out.println("我是一个静态方法");
     }
 }
