@@ -8,6 +8,10 @@ public class Employee {
     String name;
     int age;
 
+    public Employee(int age) {
+        this.age = age;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
