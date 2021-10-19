@@ -12,7 +12,7 @@ import java.util.function.Consumer;
  *      (形参列表) -> lambda体(其实就是方法体)
  * 3、使用：分六种情况介绍
  * 4、lambda表达式本质：作为接口的具体实现类的对象。简化了接口的实现过程。如Comparator实现类子类的创建
- * 5、要求实现的接口是函数式接口
+ * 5、要求实现的接口是函数式接口：只有一个方法的接口
  */
 
 public class LambdaTest {
